@@ -939,3 +939,39 @@ body.mobile-view #notification.show {
 body.mobile-view .debug-info {
     display: none;
 }
+/* ==============
+   修复：确保播放控制按钮为正圆形（解决椭圆问题）
+   ============== */
+.player-controls button {
+  /* 移除可能导致宽高不一致的 padding */
+  padding: 0 !important;
+  
+  /* 固定宽高，确保是正圆 */
+  width: 48px;
+  height: 48px;
+  
+  /* 使用 flex 居中内部图标 */
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  
+  /* 保持圆角 */
+  border-radius: 50% !important;
+  
+  /* 防止被父容器挤压变形 */
+  flex-shrink: 0;
+  
+  /* 可选：微调间距 */
+  margin: 0 6px;
+  
+  /* 确保盒模型一致 */
+  box-sizing: border-box;
+}
+
+/* 确保 SVG 图标适配 */
+.player-controls button svg {
+  width: 22px;
+  height: 22px;
+  pointer-events: none;
+  fill: currentColor;
+}
